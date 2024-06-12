@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nos voitures</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Sell Car</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Accueill</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contact') }}">Contactez-nous</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('reviews') }}">Avis</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Langue
+                </a>
+                <div class="dropdown-menu" aria-labelledby="languageDropdown">
+                    <a class="dropdown-item" href="#">Français</a>
+                    <a class="dropdown-item" href="#">English</a>
+                    <a class="dropdown-item" href="#">Español</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="currencyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Monnaie
+                </a>
+                <div class="dropdown-menu" aria-labelledby="currencyDropdown">
+                    <a class="dropdown-item" href="#">EUR</a>
+                    <a class="dropdown-item" href="#">USD</a>
+                    <a class="dropdown-item" href="#">GBP</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="bg">
+    <div class="content">
+        <h1 class="display-3">Découvrez nos Voitures</h1>
+        <p class="lead">Nos voitures de collection vous attendent</p>
+        <div class="container">
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <img src="{{ product.image_url }}" class="img-fluid" alt="{{ product.name }}">
+                            <h2>{{ product.name }}</h2>
+                            <p>{{ product.price }} €</p>
+                            <p>{{ product.description }}</p>
+                            <a href="#" class="btn btn-primary btn-custom">Acheter</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>&copy; 2024 Votre Entreprise. Tous droits réservés.</p>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../static/scripts/java.js"></script>
+</body>
+</html>
